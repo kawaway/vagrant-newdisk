@@ -23,7 +23,7 @@ module Vagrant
             env[:ui].info "call newdisk: size = #{size}, path = #{path}"
 
             if File.exist? path
-              env[:ui].info "skip newdisk - already exists: #{path}"
+              attach_disk(@machine.provider.driver, path)
             else
               new_disk(env, path, size)
               env[:ui].success "done newdisk: size = #{size}, path = #{path}"
